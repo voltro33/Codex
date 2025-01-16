@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lights On !</title>
+
+    <style>
+
+body {
+      background-color: #b8fcf7;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .grid {
+      display: grid;
+      gap: 5px;
+    }
+
+    .grid3 {
+      grid-template-columns: repeat(3, 100px);
+    }
+
+    .grid4 {
+      grid-template-columns: repeat(4, 100px);
+    }
+
+    .grid5 {
+      grid-template-columns: repeat(5, 100px);
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: gray;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .size {
+      width: 80px;
+      height: 40px;
+      background-color: yellow;
+      margin: 5px;
+      cursor: pointer;
+    }
+
+    .light-on {
+      background-color: yellow;
+    }
+
+    .counter {
+      margin: 20px;
+    }
+
+    .top-right {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 100px;
+      height: 50px;
+      background-color: yellow;
+      margin: 5px;
+      cursor: pointer;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    </style>
+
+</head>
+
+<body>
+<div>
+
+    <h2 id="counter" class="counter"> Total Tries: ∞ </h2>
+    <button id="returnHome" class="top-right" >Home</button> 
+</div>
+
+
+<div class="buttons">
+    <button class="size">3x3</button>
+    <button class="size">4x4</button>
+    <button class="size">5x5</button>
+    
+</div>
+
+    <div class="grid">
+
+     
+
+    </div>
+<script src="index.js"></script>
+</body>
+</html>
