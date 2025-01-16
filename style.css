@@ -1,0 +1,148 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: rgb(55, 182, 237);
+}
+
+.header {
+  text-align: center;
+  color: #333;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 20px 0;
+}
+
+.App-textarea {
+  width: 700px;
+  max-width: 1000px;
+  max-height: 600px;
+  height: 250px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  resize: vertical;
+
+}
+
+.App-textareaIdea {
+  width: 500px;
+  max-width: 600px;
+  max-height: 300px;
+  height: 150px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  resize: vertical;
+}
+
+.App-textarea:focus {
+  outline: none;
+  border-color: #007BFF;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.App-button {
+  background-color: #2F62A2;
+  color: white;
+  margin: 5px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.App-button:hover {
+  background-color: #FBC02D;
+  transform: scale(1.05);
+}
+
+.App-button-alt {
+  background-color: #004d73;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.App-button-alt:hover {
+  background-color: #003853;
+}
+
+.setting-button {
+  background-color: #F87D18;
+  color: white;
+  margin: 15px;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.setting-button:hover {
+  background-color: #F4511E;
+}
+
+.setting-button.alt {
+  background-color: #F2D600;
+}
+
+.setting-button.alt:hover {
+  background-color: #FBC02D;
+}
+
+.App-setting {
+  margin-top: 20px;
+}
