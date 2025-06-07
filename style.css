@@ -1,114 +1,281 @@
+:root {
+  --primary-color: #37B6ED;
+  --secondary-color: #2F62A2;
+  --accent-color: #F87D18;
+  --button-color: #4A90E2;
+  --button-hover: #357ABD;
+  --text-color: #333;
+  --background-color: rgb(55, 182, 237);
+  --border-radius: 8px;
+  --spacing-unit: 1rem;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: rgb(55, 182, 237);
+  background-color: var(--background-color);
+  font-family: 'Inter', sans-serif;
+  color: var(--text-color);
 }
 
 .App {
-  height: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(55, 182, 237);
+  background-color: var(--background-color);
+}
+
+.app-header {
+  padding: var(--spacing-unit) 0;
 }
 
 .header {
   text-align: center;
-  color: #333;
+  color: white;
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 1rem 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.header::after {
+  content: '';
   position: absolute;
-  top: 0;
+  bottom: -10px;
+  left: 0;
   width: 100%;
-  padding: 20px 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, white, transparent);
+}
+
+.app-main {
+  flex: 1;
+  padding: var(--spacing-unit);
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.input-section {
+  margin-bottom: var(--spacing-unit);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .App-textarea {
-  width: 700px;
-  max-width: 1000px;
-  max-height: 600px;
-  height: 250px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-  font-family: Arial, sans-serif;
+  width: 100%;
+  height: 400px;
+  padding: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
   resize: vertical;
+  background-color: rgba(255, 255, 255, 0.9);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .App-textareaIdea {
-  width: 500px;
-  max-width: 600px;
-  max-height: 300px;
-  height: 150px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-  font-family: Arial, sans-serif;
+  width: 100%;
+  height: 100px;
+  padding: 1rem;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
   resize: vertical;
+  background-color: rgba(255, 255, 255, 0.9);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.App-textarea:focus {
+.App-textarea:focus,
+.App-textareaIdea:focus {
   outline: none;
-  border-color: #007BFF;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  border-color: white;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .App-button {
-  background-color: #2F62A2;
-  color: white;
-  margin: 5px;
-  padding: 10px 20px;
+  background-color: white;
+  color: #FBC02D;
+  padding: 0.75rem 1.5rem;
   border: none;
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  flex: 1;
+  min-width: 150px;
+  max-width: 200px;
 }
 
 .App-button:hover {
   background-color: #FBC02D;
-  transform: scale(1.05);
-}
-
-.App-button-alt {
-  background-color: #004d73;
   color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.App-button-alt:hover {
-  background-color: #003853;
+  transform: translateY(-1px);
 }
 
 .setting-button {
-  background-color: #F87D18;
-  color: white;
-  margin: 15px;
-  padding: 15px 30px;
+  background-color: white;
+  color: var(--accent-color);
+  padding: 0.75rem 2rem;
   border: none;
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-size: 18px;
-  font-weight: bold;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 200px;
+  margin: 1rem auto;
+  display: block;
 }
 
 .setting-button:hover {
-  background-color: #F4511E;
+  background-color: var(--accent-color);
+  color: white;
+  transform: translateY(-1px);
 }
 
-.setting-button.alt {
-  background-color: #F2D600;
+.output-section {
+  margin-top: 2rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.setting-button.alt:hover {
-  background-color: #FBC02D;
+.notification {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 12px 20px;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transform: translateY(-100px);
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  max-width: 300px;
 }
 
-.App-setting {
-  margin-top: 20px;
+.notification.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.notification p {
+  margin: 0;
+  color: var(--primary-color);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.loading-bar {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 15px 20px;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transform: translateY(-100px);
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  width: 300px;
+}
+
+.loading-bar.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.loading-bar.complete .loading-progress {
+  background-color: #4CAF50;
+}
+
+.loading-bar.complete .loading-text {
+  color: #4CAF50;
+}
+
+.loading-progress {
+  width: 0%;
+  height: 4px;
+  background-color: var(--primary-color);
+  border-radius: 2px;
+  transition: width 0.1s linear, background-color 0.3s ease;
+  margin-bottom: 8px;
+}
+
+.loading-text {
+  color: var(--primary-color);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .app-main {
+    padding: 0.5rem;
+  }
+
+  .header {
+    font-size: 1.5rem;
+  }
+
+  .App-textarea,
+  .App-textareaIdea {
+    font-size: 0.9rem;
+  }
+
+  .button-group {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .App-button {
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .setting-button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    font-size: 1.25rem;
+  }
+
+  .App-textarea,
+  .App-textareaIdea {
+    padding: 0.75rem;
+  }
 }

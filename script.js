@@ -2,17 +2,17 @@ let taskInput = '';
 let codeEditInput = '';
 let loading = false;
 
-// Get references to the HTML elements
+
 const taskInputElem = document.getElementById('taskInput');
 const generateButtonElem = document.getElementById('generateButton');
 const editCodeTextAreaElem = document.getElementById('editCodeTextArea');
 
-// Update taskInput when text is changed
+
 taskInputElem.addEventListener('input', function() {
   taskInput = taskInputElem.value;
 });
 
-// Create the app (generate code)
+
 async function createApp() {
   if (taskInput === '') return;
   loading = true;
@@ -38,14 +38,14 @@ async function createApp() {
   generateButtonElem.textContent = 'Generate';
 }
 
-// Apply changes from the textarea
+
 function applyChanges() {
   const elementText = document.getElementById('editCodeTextArea');
   if (elementText.value === '') return;
   codeEditInput = elementText.value;
 }
 
-// Render the generated code in a new tab
+
 function renderCode() {
   if (codeEditInput === '') return;
 

@@ -3,51 +3,151 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#37B6ED">
   <title>Codex App</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="App">
-    <h1 class="header">Codex</h1>
-
-    <textarea
-      id="taskInput"
-      placeholder="Describe your idea(s)..."
-      class="App-textareaIdea"
-    ></textarea>
-
-    <button 
-      class="setting-button" 
-      id="generateButton" 
-      onclick="createApp()" 
-    >
-      Generate
-    </button>
-
-    <div class="App-setting">
-      <textarea
-        id="editCodeTextArea"
-        placeholder="After code generation... You can edit it directly... Apply changes: Saves the new code... Render Code: Displays the code..."
-        class="App-textarea"
-      ></textarea>
+    <div id="loadingBar" class="loading-bar">
+      <div class="loading-progress"></div>
+      <div class="loading-text">Generating code... <span id="loadingPercentage">0</span>%</div>
     </div>
+    
+    <header class="app-header">
+      <h1 class="header">Codex</h1>
+    </header>
 
-    <div class="button-group">
-      <button 
-        class="App-button" 
-        onclick="renderCode()"
-      >
-        Render Code
-      </button>
-      <button 
-        class="App-button" 
-        onclick="applyChanges()"
-      >
-        Apply Changes
-      </button>
-    </div>
+    <main class="app-main">
+      <div class="input-section">
+        <textarea
+          id="taskInput"
+          placeholder="Enter your idea here...
+Example: Create a simple calculator app"
+          class="App-textareaIdea"
+          aria-label="Task input"
+        ></textarea>
+
+        <button 
+          class="setting-button" 
+          id="generateButton" 
+          onclick="startLoading()"
+          aria-label="Generate code"
+        >
+          Generate
+        </button>
+      </div>
+
+      <div class="output-section">
+        <div class="App-setting">
+          <textarea
+            id="editCodeTextArea"
+            placeholder="Generated code will appear here...
+
+You can:
+• Edit the code directly
+• Click 'Apply Changes' to save modifications
+• Click 'Render Code' to preview the result"
+            class="App-textarea"
+            aria-label="Code editor"
+          ></textarea>
+        </div>
+
+        <div class="button-group">
+          <button 
+            class="App-button" 
+            onclick="renderCode()"
+            aria-label="Render code"
+          >
+            Render Code
+          </button>
+          <button 
+            class="App-button" 
+            onclick="applyChanges()"
+            aria-label="Apply changes"
+          >
+            Apply Changes
+          </button>
+        </div>
+      </div>
+    </main>
   </div>
 
+  <script>
+    let loadingInterval;
+    let currentProgress = 0;
+    const loadingBar = document.getElementById('loadingBar');
+    const loadingProgress = document.querySelector('.loading-progress');
+    const loadingPercentage = document.getElementById('loadingPercentage');
+    const loadingText = document.querySelector('.loading-text');
+    const generateButton = document.getElementById('generateButton');
+
+    function resetLoadingBar() {
+      if (loadingInterval) {
+        clearInterval(loadingInterval);
+      }
+      
+      currentProgress = 0;
+      loadingProgress.style.width = '0%';
+      loadingPercentage.textContent = '0';
+      loadingText.textContent = 'Generating code... 0%';
+      loadingBar.classList.remove('complete');
+    }
+
+    function startLoading() {
+      resetLoadingBar();
+      loadingBar.classList.add('show');
+      generateButton.disabled = true;
+      
+      loadingInterval = setInterval(() => {
+        if (currentProgress < 99) {
+          currentProgress += (99 / (45 * 10));
+          updateLoadingBar();
+        }
+      }, 100);
+
+      createApp().then(() => {
+        clearInterval(loadingInterval);
+        completeLoading();
+      });
+    }
+
+    function updateLoadingBar() {
+      const percentage = Math.floor(currentProgress);
+      loadingProgress.style.width = `${currentProgress}%`;
+      loadingPercentage.textContent = percentage;
+      loadingText.textContent = `Generating code... ${percentage}%`;
+    }
+
+    function completeLoading() {
+      const startTime = Date.now();
+      const duration = 1000;
+      
+      function animate() {
+        const elapsed = Date.now() - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        currentProgress = 99 + progress;
+        updateLoadingBar();
+        
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          loadingBar.classList.add('complete');
+          loadingText.textContent = 'Complete!';
+          
+          setTimeout(() => {
+            loadingBar.classList.remove('show');
+            generateButton.disabled = false;
+            resetLoadingBar();
+          }, 500);
+        }
+      }
+      
+      animate();
+    }
+  </script>
   <script src="script.js"></script>
 </body>
 </html>
